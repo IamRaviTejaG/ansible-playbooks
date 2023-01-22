@@ -1,4 +1,4 @@
-digital_ocean_centos:
+centos_hosts:
   hosts:
     i1:
       ansible_host: xxx.xxx.xxx.xxx
@@ -7,9 +7,10 @@ digital_ocean_centos:
     # username can also be defined at host level
     # (in case we need different usernames for different hosts)
     ansible_user: root
+    ansible_ssh_private_key_file: "~/.ssh/id_rsa"
 
 
-digital_ocean_ubuntu:
+ubuntu_hosts:
   hosts:
     u1:
       ansible_host: yyy.yyy.yyy.yyy
@@ -18,3 +19,4 @@ digital_ocean_ubuntu:
     # username can also be defined at host level
     # (in case we need different usernames for different hosts)
     ansible_user: root
+    ansible_ssh_private_key_file: "~/.ssh/id_rsa"
