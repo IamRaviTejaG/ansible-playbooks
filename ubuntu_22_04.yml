@@ -1,0 +1,51 @@
+---
+# Initial setup script for Ubuntu 22.04 LTS
+#
+# Run using:
+#
+# ansible-playbook -i /path/to/inventory.yml init_ubuntu_22_04.yml
+#
+
+- name: Install common command line utilities
+  hosts: digital_ocean_ubuntu
+  vars:
+    ansible_ssh_private_key_file: "~/.ssh/digital_ocean/id_rsa"
+
+  tasks:
+    - name: Install apache2-utils (for apache benchmark)
+      apt:
+        name: apache2-utils
+
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: latest
+        update_cache: true
+        force_apt_get: true
+
+    - name: Setup python ppa
+      apt_repository:
+        repo: 'ppa:deadsnakes/ppa'
+
+    - name: Install python 3.11
+      apt:
+        name: python3.11
+
+    - name: Install golang
+      apt:
+        name: golang-go
+
+    - name: Install node version manager (nvm)
+      shell: >
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
+    - name: Install Node.js LTS
+      shell: '. {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install --lts'
+      args:
+        creates: "{{ ansible_env.HOME }}/.nvm/versions/node"
+        chdir: "{{ ansible_env.HOME }}"
+        executable: /bin/bash
+
+    - name: Create required files, folders & populate aliases
+      include_tasks:
+        file: common/files_folders_aliases.yml

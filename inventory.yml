@@ -1,0 +1,20 @@
+digital_ocean_centos:
+  hosts:
+    i1:
+      ansible_host: xxx.xxx.xxx.xxx
+
+  vars:
+    # username can also be defined at host level
+    # (in case we need different usernames for different hosts)
+    ansible_user: root
+
+
+digital_ocean_ubuntu:
+  hosts:
+    u1:
+      ansible_host: yyy.yyy.yyy.yyy
+
+  vars:
+    # username can also be defined at host level
+    # (in case we need different usernames for different hosts)
+    ansible_user: root
