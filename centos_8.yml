@@ -7,6 +7,7 @@
 #
 
 - name: Install common command line utilities
+  become: true
   hosts: centos_hosts
 
   tasks:
@@ -41,6 +42,10 @@
       yum:
         name: screen
         state: latest
+    
+    - name: Install lsof
+      yum:
+        name: lsof
 
     - name: Install net-tools
       yum:

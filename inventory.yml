@@ -1,22 +1,33 @@
-centos_hosts:
+# centos_hosts:
+#   hosts:
+#     i1:
+#       ansible_host: 3.110.147.27
+
+#   vars:
+#     # username can also be defined at host level
+#     # (in case we need different usernames for different hosts)
+#     ansible_user: centos
+
+
+# ubuntu_hosts:
+#   hosts:
+#     u1:
+#       ansible_host: 64.227.134.20
+
+#   vars:
+#     # username can also be defined at host level
+#     # (in case we need different usernames for different hosts)
+#     ansible_user: root
+#     ansible_ssh_private_key_file: "~/.ssh/digital_ocean/id_rsa"
+
+
+centos_9_hosts:
   hosts:
     i1:
-      ansible_host: xxx.xxx.xxx.xxx
+      ansible_host: 194.195.116.134
 
   vars:
     # username can also be defined at host level
     # (in case we need different usernames for different hosts)
     ansible_user: root
-    ansible_ssh_private_key_file: "~/.ssh/id_rsa"
-
-
-ubuntu_hosts:
-  hosts:
-    u1:
-      ansible_host: yyy.yyy.yyy.yyy
-
-  vars:
-    # username can also be defined at host level
-    # (in case we need different usernames for different hosts)
-    ansible_user: root
-    ansible_ssh_private_key_file: "~/.ssh/id_rsa"
+    ansible_ssh_private_key_file: "~/.ssh/linode/id_rsa"

@@ -5,10 +5,10 @@
 
 - name: Populate git aliases into bashrc
   shell: |
-    echo "\n\n" >> ~/.bashrc
-    echo "# =========================================== CUSTOM ALIASES ===========================================\n" >> ~/.bashrc
+    echo $'\n\n' >> ~/.bashrc
+    echo $'# =========================================== CUSTOM ALIASES ===========================================\n' >> ~/.bashrc
     curl https://gist.githubusercontent.com/IamRaviTejaG/36ccbae9aa40e76fb822b8e2fbee30e1/raw/125ddcda54dd8f1616fc55d3fa01cc214b268d2d/user_aliases_linux.sh >> ~/.bashrc
-    echo "\n\n" >> ~/.bashrc
-    echo "# =========================================== GIT ALIASES ===========================================\n" >> ~/.bashrc
+    echo $'\n\n' >> ~/.bashrc
+    echo $'# =========================================== GIT ALIASES ===========================================\n' >> ~/.bashrc
     curl https://gist.githubusercontent.com/IamRaviTejaG/b97afd8be90e3eb32fea4d597928eac3/raw/2c118aa5d54e64ee16a2144f4d95e8db5ebcf239/git_aliases.sh >> ~/.bashrc
-    echo "\n" >> ~/.bashrc
+    echo $'\n' >> ~/.bashrc

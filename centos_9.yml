@@ -1,0 +1,98 @@
+---
+# Initial setup script for CentOS 9 Stream x64
+#
+# Run using:
+#
+# ansible-playbook -i /path/to/inventory.yml centos_9.yml
+#
+
+- name: Install common command line utilities
+  become: true
+  hosts: centos_9_hosts
+
+  tasks:
+    # - name: Install epel-release
+    #   yum:
+    #     name: epel-release
+
+    # - name: Install ufw (Firewall)
+    #   yum:
+    #     name: ufw
+
+    # - name: Install curl
+    #   yum:
+    #     name: curl
+    #     state: latest
+
+    # - name: Install wget
+    #   yum:
+    #     name: wget
+    #     state: latest
+
+    # - name: Install htop
+    #   yum:
+    #     name: htop
+
+    # - name: Install nano
+    #   yum:
+    #     name: nano
+    #     state: latest
+
+    # - name: Install screen
+    #   yum:
+    #     name: screen
+    #     state: latest
+    
+    # - name: Install lsof
+    #   yum:
+    #     name: lsof
+
+    # - name: Install net-tools
+    #   yum:
+    #     name: net-tools
+
+    # - name: Install httpd-tools (for apache benchmark)
+    #   yum:
+    #     name: httpd-tools
+
+    # - name: Install git
+    #   yum:
+    #     name: git
+
+    # - name: Install python 3.9
+    #   yum:
+    #     name: python39
+
+    # - name: Install go
+    #   yum:
+    #     name: golang
+
+    # - name: Setup nginx RPM key
+    #   rpm_key:
+    #     key: https://nginx.org/keys/nginx_signing.key
+
+    # - name: Install nginx from remote repository
+    #   yum:
+    #     name: https://nginx.org/packages/centos/8/x86_64/RPMS/nginx-1.20.1-1.el8.ngx.x86_64.rpm
+    #     state: present
+
+    # - name: Install node version manager (nvm)
+    #   shell: "curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | sh"
+
+    # - name: Install Node.js LTS
+    #   shell: '. {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install --lts'
+    #   args:
+    #     creates: "{{ ansible_env.HOME }}/.nvm/versions/node"
+    #     chdir: "{{ ansible_env.HOME }}"
+    #     executable: /bin/bash
+    
+    - name: Setup speedtest
+      shell: "curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.rpm.sh | sudo bash"
+
+    - name: Install speedtest
+      yum:
+        name: speedtest
+    
+    - name: Create required files, folders & populate aliases
+      include_tasks:
+        file: common/files_folders_aliases.yml
